@@ -17,7 +17,7 @@ jobs:
       - name: Install tools
         run: |
           sudo apt update
-          sudo apt install -y bash coreutils grep sed tar gzip findutils file dos2-utils dos2unix
+          sudo apt install -y bash coreutils grep sed tar gzip findutils file dos2unix
 
       - name: Fix permissions
         run: |
