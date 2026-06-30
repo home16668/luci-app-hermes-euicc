@@ -17,12 +17,17 @@ jobs:
       - name: Install tools
         run: |
           sudo apt update
-          sudo apt install -y bash coreutils grep sed tar gzip findutils file dos2unix
+          sudo apt install -y bash coreutils grep sed tar gzip findutils file dos2-utils dos2unix
 
       - name: Fix permissions
         run: |
           find . -type f -name "*.sh" -exec dos2unix {} \; || true
           chmod +x build.sh
+
+      - name: Configure git identity
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Build IPK
         run: |
@@ -34,4 +39,5 @@ jobs:
         with:
           name: luci-app-hermes-euicc-ipk
           path: |
+            build_ipk/*.ipk
             **/*.ipk
